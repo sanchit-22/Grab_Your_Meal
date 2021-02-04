@@ -10,6 +10,5 @@ def Signup(request):
 def Login(request):
     return HttpResponse("this is Login page")
 
-def Canteen(request):
-    return HttpResponse("this is canteen login page")
+
 
