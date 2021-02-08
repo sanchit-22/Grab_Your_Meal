@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel = "stylesheet" href="style.css">
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background-image: url("/static/home.jpg");
+        }
+        .logo{
+            margin-top: 50px;
+            margin-left: 900px;
+        }
+        .sign-up-form{
+            width: 360px;
+            box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
+            background : white;
+            padding: 20px;
+            /* margin:5% auto 0; */
+            margin-left : 40%;
+            margin-top: 2%;
+            text-align: center;
+        }
+        .sign-up-form h1{
+            color: rgb(0, 0, 0);
+            margin-bottom: 30px;
+            /* margin-bottom: 30px; Just make some difference between next text */
+        }
+        .input-box{
+            border-radius: 20px;
+            padding: 10px;
+            margin: 10px 0;
+            /* width: 100%; */
+            width: 80%;
+            border: 1px solid #999;
+            outline: none;
+        }
+         button{
+             color: #fff;
+             width: 90%;
+             padding: 10px;
+             border-radius: 20px;
+             font-size: 15px;
+             margin: 10px;
+             border: none;
+             outline: none;
+             cursor: pointer;
+
+        }
+        .sign-btn{
+            background-color: rgb(38, 160, 190);
+        }
+        .Gsign-btn{
+            background-color: rgb(38, 160, 190);
+        }
+        a{
+            text-decoration: none;
+        }
+        hr{
+            margin-top: 20px;
+            width: 200px;
+       }
+       .or{
+           background-color: white;
+            margin: -19px auto 10px;
+            width: 20%;
+       }
+
+       /* first name and last name  */
+       #Name1{
+         width: 32%;
+         margin-left: -50px; 
+       }
+       #Name2{
+           width: 32%;
+           margin-left: 25px;
+           margin-right: -50px;
+       }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <a href="index.html"> <img src="/static/logo.png" alt=""></a>
+    </div>
+    <div class = "sign-up-form">
+        <h1>Sign up Now</h1>
+        <form action="/signup"  method="POST">
+			{% csrf_token %}
+            <input type="text" id = "Name1" class="input-box" name = "fname" placeholder="First Name" required>
+            <input type="text" id = "Name2" class="input-box" name = "lname" placeholder="Last Name" required>
+            <input type="email" class="input-box" name="email" placeholder="Your Email" required>
+            <!-- <input type="tel" class="input-box" placeholder="Your contact Number" pattern="[0-9]" required > -->
+            <input type="number" class="input-box" name="number" placeholder="Your contact Number" min = 0 required >
+            <input type="password" class="input-box" name="password" placeholder="Your Password" required>
+            <br>
+            <button type="submit" class="sign-btn">Sign up</button>
+            <hr>
+            <p class="or">Or</p>
+            <button type="button" class="Gsign-btn">Continue with Google</button>
+
+            <p>Do you have an account? <a href="/login">Log in </a></p>
+        </form>
+    </div>
+    
+</body>
+</html>
