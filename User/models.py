@@ -9,6 +9,7 @@ class student(models.Model):
 	UserEmail=models.CharField(max_length=50,null=False)
 	Payment_due=models.CharField(max_length=10, null=True)
 	otp=models.CharField(max_length=10, null=True)
+	is_collegeStudent=models.CharField(max_length=3,null=False)
 	objects=models.DjongoManager()
 	def __str__(self):
 		return self.name

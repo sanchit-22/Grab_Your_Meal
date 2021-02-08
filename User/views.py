@@ -35,7 +35,7 @@ def webmail_validation(request):
             user=student.objects.get(UserEmail__iexact=email)
         except student.DoesNotExist:
             user = None
-        if user!=None:
+        if user!=None and user.is_collegeStudent=="YES":
             mess=f"Hello,\nYour OTP is {usr_otp}\n"
             send_mail(
                 "Welcome to GrabYourMeal-Verify your email",
@@ -49,6 +49,10 @@ def webmail_validation(request):
             print(user.otp)
             return render(request,'enterOTP.html',{ 'webmail' : email})
             print("fajsfhadsfn")
+        elif user!=None and user.is_collegeStudent=="NO":
+            messages.error(request,'This service is only available for IIITG student in case some difficulty contact canteen manager')
+            return render(request,'webmail_login.html')
+
         else:
             messages.error(request,'webmail not correct')
             return render(request,'webmail_login.html')
