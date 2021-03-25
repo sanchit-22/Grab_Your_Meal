@@ -10,11 +10,11 @@
             margin: 0;
             padding: 0;
             font-family: sans-serif;
-            background-image: url("/static/home.jpg");
+            background-image: url("/static/home/home.jpg");
         }
         .logo{
-            margin-top: 50px;
-            margin-left: 900px;
+            margin-top: 10px;
+            margin-left: 670px;
         }
         .sign-up-form{
             width: 360px;
@@ -85,24 +85,20 @@
 </head>
 <body>
     <div class="logo">
-        <a href="index.html"> <img src="/static/logo.png" alt=""></a>
+        <a href="index.html"> <img src="/static/home/logo.png" alt=""></a>
     </div>
     <div class = "sign-up-form">
         <h1>Sign up Now</h1>
-        <form action="/signup"  method="POST">
+        <form action="/signup_validation"  method="POST">
 			{% csrf_token %}
-            <input type="text" id = "Name1" class="input-box" name = "fname" placeholder="First Name" required>
-            <input type="text" id = "Name2" class="input-box" name = "lname" placeholder="Last Name" required>
+            <input type="text" class="input-box" name = "fname" placeholder="Name" required>
             <input type="email" class="input-box" name="email" placeholder="Your Email" required>
             <!-- <input type="tel" class="input-box" placeholder="Your contact Number" pattern="[0-9]" required > -->
-            <input type="number" class="input-box" name="number" placeholder="Your contact Number" min = 0 required >
+            <input type="text" class="input-box" name="number" placeholder="Your contact Number" min = 0 required >
             <input type="password" class="input-box" name="password" placeholder="Your Password" required>
             <br>
             <button type="submit" class="sign-btn">Sign up</button>
             <hr>
-            <p class="or">Or</p>
-            <button type="button" class="Gsign-btn">Continue with Google</button>
-
             <p>Do you have an account? <a href="/login">Log in </a></p>
         </form>
     </div>

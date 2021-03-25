@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'User',
+    'Canteen',
 ]
 
 MIDDLEWARE = [
@@ -69,7 +71,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Ecanteen.wsgi.application'
-
+ASGI_APPLICATION = 'Ecanteen.asgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -134,6 +136,12 @@ STATICFILES_DIRS = [
 
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST='smtp.gmail.com'
+DEFAULT_FROM_EMAIL='grabyourmeal1@gmail.com'
+SERVER_EMAIL='grabyourmeal1@gmail.com'
 EMAIL_HOST_USER='grabyourmeal1@gmail.com'
 EMAIL_HOST_PASSWORD='HighlySecuredPassword'
 EMAIL_USE_TLS=True
+EMAIL_PORT= 587
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL='/media/'

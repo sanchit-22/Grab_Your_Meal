@@ -1,7 +1,119 @@
-{% include 'canteen/header.html' %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="/static/Canteen/add_item/add_itemhome.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style type=text/css>
+        .logo img{
+            width:50px;
+        }
+        .left{
+            float: left;
+            text-align: left;
+        }
+        * {
+            font-family: sans-serif; /* Change your font family */
+          }
 
-{{canteenuserid}}
+        .content-table {
+          border-collapse: collapse;
+          margin: 25px 0;
+          font-size: 0.9em;
+          min-width: 400px;
+          border-radius: 5px 5px 0 0;
+          overflow: hidden;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .content-table thead tr {
+          background-color: #009879;
+          color: #ffffff;
+          text-align: left;
+          font-weight: bold;
+        }
+
+        .content-table th,
+        .content-table td {
+          padding: 12px 15px;
+        }
+
+        .content-table tbody tr {
+          border-bottom: 1px solid #dddddd;
+        }
+
+        .content-table tbody tr:nth-of-type(even) {
+          background-color: #f3f3f3;
+        }
+
+        .content-table tbody tr:last-of-type {
+          border-bottom: 2px solid #009879;
+        }
+
+        .content-table tbody tr.active-row {
+          font-weight: bold;
+          color: #009879;
+        }
+
+    </style>
+    <title>home</title>
+  </head>
+{% include 'canteen/header.html' %}
+<table class="content-table">
+  <thead>
+    <tr>
+      <th>orderID</th>
+      <th>UserName</th>
+      <th>UserRollNo</th>
+      <th>Order_name</th>
+      <th>Quantity</th>
+      <th>Order_cost</th>
+      <th>Total_Cost</th>
+      <th>Payment Method</th>
+      <th>Delivered</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+  {% for order in text %}
+  <form action="order_delivered" method="POST">
+  {% csrf_token %}
+    <tr>
+      <td>{{order.todays_id}}</td>
+      <td>{{order.Username}}</td>
+      <td>{{order.UserRollno}}</td>
+      <td>
+        <ul>
+            {% for detail in order.order_detail.name %}
+              <li>{{detail}}</li>
+            {% endfor %}
+        </ul>
+      </td> 
+      <td>
+        <ul>
+            {% for detail in order.order_detail.Quantity %}
+              <li>{{detail}}</li>
+            {% endfor %}
+        </ul>
+      </td>
+      <td>
+        <ul>
+            {% for detail in order.order_detail.cost %}
+              <li>{{detail}}</li>
+            {% endfor %}
+        </ul>
+      </td>
+      <td>{{order.totalcost}}</td>
+      <td>{{order.payment_method}}</td>
+      <input type= "hidden" value="{{order.id}}" name="id"> 
+      <td><button type="submit" class="btn btn-warning">Delivered</button></td>
+    </tr>
+    </form>
+  {% endfor %}
+  </tbody>
+</table>
 </body>
 </html>
-
-

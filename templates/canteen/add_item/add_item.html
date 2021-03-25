@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="/static/Canteen/add_item/add_itemhome.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style type=text/css>
+        .logo img{
+            width:50px;
+        }
+        .left{
+            float: left;
+            text-align: left;
+        }
+    </style>
+    <title>home</title>
+  </head>
+{% include 'canteen/header.html' %}
+    <!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+    <div class="container">
+        <div class="title">
+            Add item
+        </div>
+        <div class="content">
+            <form action="adding_item" Method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Name of the Food</span>
+                        <input type="text" placeholder="Enter Food name" name="name" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Price</span>
+                        <input type="text" placeholder="Price of the food item" name="price" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Upload Image</span>
+                        <input type="File" name="image" required>
+                    </div>
+                </div>
+                <div class="gender-details">
+                    <input type="radio" name="category" id="dot-1" value="China Towns">
+                    <input type="radio" name="category" id="dot-2" value="Paratha">
+                    <input type="radio" name="category" id="dot-3" value="Fast_food">
+                    <input type="radio" name="category" id="dot-4" value="Thali">
+                    <input type="radio" name="category" id="dot-5" value="Chips and Beverages">
+                    <span class="gender-title">Category</span>
+                    <div class="category">
+                        <label for="dot-1">
+                            <span class="dot one"></span>
+                            <span class="gender">China Towns</span>
+                        </label>
+                        <label for="dot-2">
+                            <span class="dot two"></span>
+                            <span class="gender">Paratha</span>
+                        </label>
+                        <label for="dot-3">
+                            <span class="dot three"></span>
+                            <span class="gender">Fast Food</span>
+                        </label>
+                        <label for="dot-4">
+                            <span class="dot four"></span>
+                            <span class="gender">Thali</span>
+                        </label>
+                        <label for="dot-5">
+                            <span class="dot five"></span>
+                            <span class="gender">Chips and Beverages</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Register">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

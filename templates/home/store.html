@@ -1,0 +1,144 @@
+{% load blog_tags %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Grab Your Meal | Store</title>
+        <meta name="description" content="This is the description">
+        <link rel="stylesheet" href="/static/user/styles.css" />
+      
+        <script src="/static/user/store.js"></script>
+     
+    </head>
+    <body>
+        
+        <header class="main-header">
+ <div class="topnav">
+  <a class="active" href="#home">Grab Your Meal</a>
+  <div class="topnav-right">
+    <a href="#search">{{username}}</a>
+    <a href="user_logout">Logout</a>
+  </div>
+</div>
+            
+            
+<!--            <h1 class="band-name band-name-large">The Generics</h1>-->
+    </header>
+    <form action="/homeUser/payment_type/" Method="POST">
+    {% csrf_token %}
+        <section class="container content-section">
+            <h2 class="section-header">China Towns</h2>
+            <div class="shop-items">
+                {%for food in liste %}
+                    {% if food.category == 'China Towns' %}
+                        <div class="shop-item">
+                            <span class="shop-item-title">{{food.item_name}}</span>
+                            <img class="shop-item-image" src="/media/{{food.image}}">
+                            <div class="shop-item-details">
+                                <span class="shop-item-price">Rs {{food.price}}</span>
+<!--                                 <button class="btn btn-primary shop-item-button Available" type="button">Available</button>-->
+                                <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                            </div>
+                        </div>
+                    {% endif %}
+                {%endfor%}
+            </div>
+        </section>
+        <section class="container content-section">
+            <h2 class="section-header">Paratha</h2>
+            <div class="shop-items">
+                {%for food in liste %}
+                    {% if food.category == 'Paratha' %}
+                        <div class="shop-item">
+                            <span class="shop-item-title">{{food.item_name}}</span>
+                            <img class="shop-item-image" src="/media/{{food.image}}">
+                            <div class="shop-item-details">
+                                <span class="shop-item-price">Rs {{food.price}}</span>
+<!--                                 <button class="btn btn-primary shop-item-button Available" type="button">Available</button>-->
+                                <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                            </div>
+                        </div>
+                    {% endif %}
+                {%endfor%}
+            </div>
+        </section>
+        <section class="container content-section">
+            <h2 class="section-header">Fast Food</h2>
+            <div class="shop-items">
+                {%for food in liste %}
+                    {% if food.category == 'Fast_food' %}
+                        <div class="shop-item">
+                            <span class="shop-item-title">{{food.item_name}}</span>
+                            <img class="shop-item-image" src="/media/{{food.image}}">
+                            <div class="shop-item-details">
+                                <span class="shop-item-price">Rs {{food.price}}</span>
+<!--                                 <button class="btn btn-primary shop-item-button Available" type="button">Available</button>-->
+                                <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                            </div>
+                        </div>
+                    {% endif %}
+                {%endfor%}
+            </div>
+        </section>
+        <section class="container content-section">
+            <h2 class="section-header">Thali</h2>
+            <div class="shop-items">
+                {%for food in liste %}
+                    {% if food.category == 'Thali' %}
+                        <div class="shop-item">
+                            <span class="shop-item-title">{{food.item_name}}</span>
+                            <img class="shop-item-image" src="/media/{{food.image}}">
+                            <div class="shop-item-details">
+                                <span class="shop-item-price">Rs {{food.price}}</span>
+<!--                                 <button class="btn btn-primary shop-item-button Available" type="button">Available</button>-->
+                                <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                            </div>
+                        </div>
+                    {% endif %}
+                {%endfor%}
+            </div>
+        </section>
+        <section class="container content-section">
+            <h2 class="section-header">Chips and Beverages</h2>
+            <div class="shop-items">
+                {%for food in liste %}
+                    {% if food.category == 'Chips and Beverages' %}
+                        <div class="shop-item">
+                            <span class="shop-item-title">{{food.item_name}}</span>
+                            <img class="shop-item-image" src="/media/{{food.image}}">
+                            <div class="shop-item-details">
+                                <span class="shop-item-price">Rs {{food.price}}</span>
+<!--                                 <button class="btn btn-primary shop-item-button Available" type="button">Available</button>-->
+                                <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                            </div>
+                        </div>
+                    {% endif %}
+                {%endfor%}
+            </div>
+        </section>
+        <section class="container content-section">
+            <h2 class="section-header">CART</h2>
+            <div class="cart-row">
+                <span class="cart-item cart-header cart-column">ITEM</span>
+                <span class="cart-price cart-header cart-column">PRICE</span>
+                <span class="cart-quantity cart-header cart-column">QUANTITY</span>
+            </div>
+            <div class="cart-items">
+            </div>
+            <div class="cart-total">
+                <strong class="cart-total-title">Total</strong>
+                <span class="cart-total-price">$0</span>
+            </div>
+            <input class="btn btn-primary btn-purchase" type="submit"></input>
+        </section>
+    </form>
+    <!---
+    <script>
+        var socket=new WebSocket('ws://localhost:8000/ws/some_url/')
+        socket.onmessage=function(event){
+        var data =JSON.parse(event.data);
+        console.log(data);
+        document.querySelector('#app').innerText=data.message;
+  }
+    </script>-->
+    </body>
+</html>

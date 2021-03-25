@@ -1,0 +1,114 @@
+{% load blog_tags %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="/static/user/styles.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style type=text/css>
+        .logo img{
+            width:50px;
+        }
+        .left{
+            float: left;
+            text-align: left;
+        }
+    </style>
+    <title>Grab Your Meal |Todays Meny</title>
+    <script src="/static/user/store.js" async></script> 
+    </head>
+    <body>
+        {% include 'canteen/header.html' %}
+        <section class="container content-section">
+            <h2 class="section-header">China Towns</h2>
+            <div class="shop-items">
+                {%for food in liste %}
+                    {% if food.category == 'China Towns' %}
+                        <div class="shop-item">
+                            <span class="shop-item-title">{{food.item_name}}</span>
+                            <img class="shop-item-image" src="/media/{{food.image}}">
+                            <div class="shop-item-details">
+                                <span class="shop-item-price">Rs {{food.price}}</span>
+<!--                                 <button class="btn btn-primary shop-item-button Available" type="button">Available</button>-->
+                            </div>
+                        </div>
+                    {% endif %}
+                {%endfor%}
+            </div>
+        </section>
+        <section class="container content-section">
+            <h2 class="section-header">Paratha</h2>
+            <div class="shop-items">
+                {%for food in liste %}
+                    {% if food.category == 'Paratha' %}
+                        <div class="shop-item">
+                            <span class="shop-item-title">{{food.item_name}}</span>
+                            <img class="shop-item-image" src="/media/{{food.image}}">
+                            <div class="shop-item-details">
+                                <span class="shop-item-price">Rs {{food.price}}</span>
+<!--                                 <button class="btn btn-primary shop-item-button Available" type="button">Available</button>-->
+                            </div>
+                        </div>
+                    {% endif %}
+                {%endfor%}
+            </div>
+        </section>
+        <section class="container content-section">
+            <h2 class="section-header">Fast Food</h2>
+            <div class="shop-items">
+                {%for food in liste %}
+                    {% if food.category == 'Fast_food' %}
+                        <div class="shop-item">
+                            <span class="shop-item-title">{{food.item_name}}</span>
+                            <img class="shop-item-image" src="/media/{{food.image}}">
+                            <div class="shop-item-details">
+                                <span class="shop-item-price">Rs {{food.price}}</span>
+<!--                                 <button class="btn btn-primary shop-item-button Available" type="button">Available</button>-->
+                            </div>
+                        </div>
+                    {% endif %}
+                {%endfor%}
+            </div>
+        </section>
+        <section class="container content-section">
+            <h2 class="section-header">Thali</h2>
+            <div class="shop-items">
+                {%for food in liste %}
+                    {% if food.category == 'Thali' %}
+                        <div class="shop-item">
+                            <span class="shop-item-title">{{food.item_name}}</span>
+                            <img class="shop-item-image" src="/media/{{food.image}}">
+                            <div class="shop-item-details">
+                                <span class="shop-item-price">Rs {{food.price}}</span>
+<!--                                 <button class="btn btn-primary shop-item-button Available" type="button">Available</button>-->
+                            </div>
+                        </div>
+                    {% endif %}
+                {%endfor%}
+            </div>
+        </section>
+        <section class="container content-section">
+            <h2 class="section-header">Chips and Beverages</h2>
+            <div class="shop-items">
+                {%for food in liste %}
+                    {% if food.category == 'Chips and Beverages' %}
+                        {% for x in a.0 %}
+                        {% endfor %}
+                        <div class="shop-item">
+                            <span class="shop-item-title">{{food.name}}</span>
+                            <img class="shop-item-image" src="/media/{{food.image}}">
+                            <div class="shop-item-details">
+                                <span class="shop-item-price">Rs {{food.price}}</span>
+<!--                                 <button class="btn btn-primary shop-item-button Available" type="button">Available</button>-->
+                            </div>
+                        </div>
+                    {% endif %}
+                {%endfor%}
+            </div>
+        </section>
+        </footer>
+    </body>
+</html>

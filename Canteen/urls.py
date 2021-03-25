@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path,include
 from Canteen import views
+
+
 urlpatterns = [
     path('', views.canteen_login, name='canteen'),
     path('validate_login', views.validateLoginCanteen, name='validate_login'),
@@ -9,4 +11,6 @@ urlpatterns = [
     path('removeitem',views.removeitem, name='removeitem'),
     path('todaysmenu',views.todaysmenu, name='todaysmenu'),
     path('canteen_logout',views.canteen_logout, name='logout'),
-]
+    path('adding_item',views.adding_item, name='add_item'),
+    path('order_delivered',views.order_delivered, name='order_delivered'),
+]  

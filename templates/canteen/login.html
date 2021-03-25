@@ -1,43 +1,111 @@
 <!DOCTYPE html>
-<!-- Created By CodingNepal -->
-<html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="/static/Canteen/login.css">
-    </head>
-    <body>
-    <header>
-        <div class="wrapper">
-            <div class="title">
-                Login Form for Canteen Side
-            </div>
-            <form method="POST" action="validate_login">
-                {% csrf_token %}
-                <div class="field">
-                    <input type="text"  name="loginuserid"required>
-                    <label>UserID</label>
-                </div>
-                <div class="field">
-                    <input type="password" name="loginuserpass" required>
-                    <label>Password</label>
-                </div>
-                <div class="content">
-                    <div class="checkbox">
-                        <input type="checkbox" id="remember-me">
-                        <label for="remember-me">Remember me</label>
-                    </div>
-                  <!---  <div class="pass-link">
-                        <a href="#">Forgot password?</a>
-                    </div>-->
-                </div>
-                <div class="field">
-                    <input type="submit" value="Login">
-                </div>
-               <!-- <div class="signup-link">
-                    Not a member? <a href="#">Signup now</a>
-                </div>-->
-            </form>
-        </div>
-        </header>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel = "stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background-image: url("/static/home/home.jpg");
+            background-repeat: no-repeat, repeat;
+             background-size: cover;
+        }
+        .logo{
+            margin-top: 50px;
+            margin-left: 640px;
+            position: relative;
+        }
+        .sign-up-form{
+            width: 360px;
+            box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
+            background : white;
+            padding: 20px;
+            /* margin:5% auto 0; */
+            margin-left : 40%;
+            margin-top: 2%;
+            text-align: center;
+        }
+        .sign-up-form h1{
+            color: rgb(0, 0, 0);
+            margin-bottom: 30px;
+            /* margin-bottom: 30px; Just make some difference between next text */
+        }
+        .input-box{
+            border-radius: 20px;
+            padding: 10px;
+            margin: 10px 0;
+            /* width: 100%; */
+            width: 80%;
+            border: 1px solid #999;
+            outline: none;
+        }
+         button{
+             color: #fff;
+             width: 90%;
+             padding: 10px;
+             border-radius: 20px;
+             font-size: 15px;
+             margin: 10px;
+             border: none;
+             outline: none;
+             cursor: pointer;
+
+        }
+        .sign-btn{
+            background-color: rgb(38, 160, 190);
+        }
+        .Gsign-btn{
+            background-color: rgb(38, 160, 190);
+        }
+        a{
+            text-decoration: none;
+        }
+        hr{
+            margin-top: 20px;
+            width: 200px;
+       }
+       .or{
+           background-color: white;
+            margin: -19px auto 10px;
+            width: 20%;
+       }
+
+       /* first name and last name  */
+       #Name1{
+         width: 32%;
+         margin-left: -50px;
+       }
+       #Name2{
+           width: 32%;
+           margin-left: 25px;
+           margin-right: -50px;
+       }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <a href="index.html"> <img src="/static/home/logo.png" alt=""></a>
+    </div>
+    <div class = "sign-up-form">
+        <h1>Canteen Login</h1>
+        <form method="POST" action="validate_login">
+            {% csrf_token %}
+            <input type="text" class="input-box" placeholder="Your Email" name="loginuserid" required>
+            <input type="password" class="input-box" placeholder="Your Password" name="loginuserpass" required>
+            <br>
+            <button type="submit" class="sign-btn">Login</button>
+        </form>
+    </div>
+</body>
 </html>
