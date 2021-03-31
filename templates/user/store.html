@@ -3,42 +3,46 @@
 <html>
     <head>
         <title>Grab Your Meal | Store</title>
-        <meta name="description" content="This is the description">
-        <link rel="stylesheet" href="/static/user/styles.css" />
-      
-        <script src="/static/user/store.js"></script>
-     
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" type="text/css" href="/static/user/styles.css">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <style type=text/css>.logo img{
+                width:50px;
+            }
+            .left{
+                float: left;
+                text-align: left;
+            }
+            * {
+                font-family: sans-serif; /* Change your font family */
+              }
+            </style>
     </head>
     <body>
-        
-        <header class="main-header">
- <div class="topnav">
-  <a class="active" href="#home">Grab Your Meal</a>
-  <div class="topnav-right">
-    <a href="#search">{{username}}</a>
-    <a href="user_logout">Logout</a>
-  </div>
-</div>
-            
-            
+    {% include 'user/header.html' %}            
 <!--            <h1 class="band-name band-name-large">The Generics</h1>-->
     </header>
-    <form action="/homeUser/payment_type/" Method="POST">
-    {% csrf_token %}
+    Last Order Placed id={{currenorder_id}} <br>
+    Last Order Delivered id={{previousorder_id}}
         <section class="container content-section">
             <h2 class="section-header">China Towns</h2>
             <div class="shop-items">
                 {%for food in liste %}
                     {% if food.category == 'China Towns' %}
+                    <form action="/homeUser/prod_description/" Method="POST">
+                    {% csrf_token %}
                         <div class="shop-item">
                             <span class="shop-item-title">{{food.item_name}}</span>
                             <img class="shop-item-image" src="/media/{{food.image}}">
                             <div class="shop-item-details">
                                 <span class="shop-item-price">Rs {{food.price}}</span>
-<!--                                 <button class="btn btn-primary shop-item-button Available" type="button">Available</button>-->
-                                <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                                <input type= "hidden" value="{{food.item_name}}" name="id">
+                                <button class="btn btn-primary" type="submit">Order</button>
                             </div>
                         </div>
+                    </form>
                     {% endif %}
                 {%endfor%}
             </div>
@@ -48,15 +52,19 @@
             <div class="shop-items">
                 {%for food in liste %}
                     {% if food.category == 'Paratha' %}
+                    <form action="/homeUser/prod_description/" Method="POST">
+                    {% csrf_token %}
                         <div class="shop-item">
                             <span class="shop-item-title">{{food.item_name}}</span>
                             <img class="shop-item-image" src="/media/{{food.image}}">
                             <div class="shop-item-details">
                                 <span class="shop-item-price">Rs {{food.price}}</span>
+                                <input type= "hidden" value="{{food.item_name}}" name="id">
 <!--                                 <button class="btn btn-primary shop-item-button Available" type="button">Available</button>-->
-                                <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                                <button class="btn btn-primary shop-item-button" type="submit">Order</button>
                             </div>
                         </div>
+                    </form>
                     {% endif %}
                 {%endfor%}
             </div>
@@ -66,15 +74,19 @@
             <div class="shop-items">
                 {%for food in liste %}
                     {% if food.category == 'Fast_food' %}
+                    <form action="/homeUser/prod_description/" Method="POST">
+                    {% csrf_token %}
                         <div class="shop-item">
                             <span class="shop-item-title">{{food.item_name}}</span>
                             <img class="shop-item-image" src="/media/{{food.image}}">
                             <div class="shop-item-details">
                                 <span class="shop-item-price">Rs {{food.price}}</span>
+                                <input type= "hidden" value="{{food.item_name}}" name="id">
 <!--                                 <button class="btn btn-primary shop-item-button Available" type="button">Available</button>-->
-                                <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                                <button class="btn btn-primary shop-item-button" type="submit">Order</button>
                             </div>
                         </div>
+                    </form>
                     {% endif %}
                 {%endfor%}
             </div>
@@ -84,15 +96,19 @@
             <div class="shop-items">
                 {%for food in liste %}
                     {% if food.category == 'Thali' %}
+                    <form action="/homeUser/prod_description/" Method="POST">
+                    {% csrf_token %}
                         <div class="shop-item">
                             <span class="shop-item-title">{{food.item_name}}</span>
                             <img class="shop-item-image" src="/media/{{food.image}}">
                             <div class="shop-item-details">
                                 <span class="shop-item-price">Rs {{food.price}}</span>
+                                <input type= "hidden" value="{{food.item_name}}" name="id">
 <!--                                 <button class="btn btn-primary shop-item-button Available" type="button">Available</button>-->
-                                <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                                <button class="btn btn-primary shop-item-button" type="submit">Order</button>
                             </div>
                         </div>
+                    </form>
                     {% endif %}
                 {%endfor%}
             </div>
@@ -102,33 +118,22 @@
             <div class="shop-items">
                 {%for food in liste %}
                     {% if food.category == 'Chips and Beverages' %}
+                    <form action="/homeUser/prod_description/" Method="POST">
+                    {% csrf_token %}
                         <div class="shop-item">
                             <span class="shop-item-title">{{food.item_name}}</span>
                             <img class="shop-item-image" src="/media/{{food.image}}">
                             <div class="shop-item-details">
                                 <span class="shop-item-price">Rs {{food.price}}</span>
+                                <input type= "hidden" value="{{food.item_name}}" name="id">
 <!--                                 <button class="btn btn-primary shop-item-button Available" type="button">Available</button>-->
-                                <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                                <button class="btn btn-primary shop-item-button" type="submit">Order</button>
                             </div>
                         </div>
+                    </form>
                     {% endif %}
                 {%endfor%}
             </div>
-        </section>
-        <section class="container content-section">
-            <h2 class="section-header">CART</h2>
-            <div class="cart-row">
-                <span class="cart-item cart-header cart-column">ITEM</span>
-                <span class="cart-price cart-header cart-column">PRICE</span>
-                <span class="cart-quantity cart-header cart-column">QUANTITY</span>
-            </div>
-            <div class="cart-items">
-            </div>
-            <div class="cart-total">
-                <strong class="cart-total-title">Total</strong>
-                <span class="cart-total-price">$0</span>
-            </div>
-            <input class="btn btn-primary btn-purchase" type="submit"></input>
         </section>
     </form>
     <!---

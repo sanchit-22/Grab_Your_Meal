@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Order Summary</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link rel="stylesheet" href="/static/user/shopping-cart.css">
+        <style>
+            .logo img{
+                width:50px;
+            }
+            .left{
+                float: left;
+                text-align: left;
+            }
+            * {
+                font-family: sans-serif; /* Change your font family */
+              }
+    </style>
+</head>
+<body>
+{% include 'user/header.html' %}
+	<main class="page">
+	 	<section class="shopping-cart dark">
+	 		<div class="container">
+		        <div class="block-heading">
+		          <h2>Order Summary</h2>
+		        </div>
+                <form action="/homeUser/checkout/" method='POST'>
+		        <div class="content">
+	 				<div class="row">
+	 					<div class="col-md-12 col-lg-8">
+	 						<div class="items">
+							 {% if cart_item %}
+                            <form action="/homeUser/checkout/" method='POST'>
+                            {% csrf_token %}
+                                {% for item in cart_item %}
+				 				<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+				 				<div class="product">
+				 					<div class="row">
+					 					<div class="col-md-3">
+					 						<img class="img-fluid mx-auto d-block image" src="/media/{{item.image}}">
+					 					</div>
+					 					<div class="col-md-8">
+					 						<div class="info">
+						 						<div class="row">
+							 						<div class="col-md-5 product-name">
+														<br>
+														<br>
+							 							<div class="product-name">
+								 							<a href="#">{{item.item_name}}</a>
+                                                            <input type="hidden" name="item_list[]" value="{{item.item_name}}">
+									 					</div>
+							 						</div>
+							 						<div class="col-md-4 quantity">
+							 							<label for="quantity"></label>
+							 							<input id="quantity" type="number" value ="{{item.quantity}}" class="form-control quantity-input" name="item_quantity[]" min="0" step="1" value="1" >
+							 						</div>
+							 						<div class="col-md-3 price">
+							 							<span>&#x20B9 {{item.price}}</span>
+							 						</div>
+							 					</div>
+							 				</div>
+					 					</div>
+					 				</div>
+				 				</div>
+                                {% endfor %}
+				 			</div>
+			 			</div>
+		 			</div>
+					 	<button type="submit" class="btn btn-primary btn-lg btn-block">Checkout</button> 
+		 		</div>
+                </form>
+				{% endif %}
+				{% if cart_item_empty %}
+					<p>Empty Cart</p>
+					<a href="/homeUser">GoBack</a>
+				{% endif %}
+	 		</div>
+		</section>
+	</main>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

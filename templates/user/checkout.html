@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+    <style>
+            .logo img{
+                width:50px;
+            }
+            .left{
+                float: left;
+                text-align: left;
+            }
+            * {
+                font-family: sans-serif; /* Change your font family */
+              }
+    </style>
+<body>
+{% include 'user/header.html'%}
+<div class="col-md-12 col-lg-4">
+	<div class="summary">
+		<h3>Summary</h3>
+		<div class="summary-item"><span class="text">Subtotal</span><span class="price">&#x20B9 {{price}}</span></div>
+		<div class="summary-item"><span class="text">Total</span><span class="price">&#x20B9 {{price}}</span></div>
+        <form action="/homeUser/payment_type/" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="total" value={{price}}>
+        <button class="btn btn-primary" type="submit">Pay</button>
+        {{price}}
+        </form>
+	</div>
+</div>

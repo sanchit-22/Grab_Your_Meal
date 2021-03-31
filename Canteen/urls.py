@@ -13,4 +13,5 @@ urlpatterns = [
     path('canteen_logout',views.canteen_logout, name='logout'),
     path('adding_item',views.adding_item, name='add_item'),
     path('order_delivered',views.order_delivered, name='order_delivered'),
+    path('cash',views.cash,name='cash'),
 ]  

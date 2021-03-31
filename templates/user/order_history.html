@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+    <style>
+            .logo img{
+                width:50px;
+            }
+            .left{
+                float: left;
+                text-align: left;
+            }
+            * {
+                font-family: sans-serif; /* Change your font family */
+              }
+    </style>
+<body>
+{% include 'user/header.html'%}
+    <div class="history-page">
+<div class="container bootdey flex-grow-1 container-p-y">
+      <div class="media align-items-center py-3 mb-3">
+              <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="d-block ui-w-100 rounded-circle">
+              <div class="media-body ml-4">
+                <h4 class="font-weight-bold mb-0">{{username}}</h4>
+                <div class="text-muted mb-2">Contact Number: {{user.Phoneno}}</div>
+                <div class="text-muted mb-2">Email Id: {{user.UserEmail}}</div>
+                {% if college %}
+                  <div class="text-muted mb-2">Roll no: {{user.UserRollno}}</div>
+                  <div class="text-muted mb-2">Amount Debt: {{user.Payment_due}}</div>
+                {% endif %}
+              </div>
+            </div>
+    </div>
+    
+<div class="container bootdey">
+  {% for order in previous_order %}
+    <div class="panel panel-default panel-order">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-11">
+                    <div class="row">
+                        <div class="col-md-12">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th>orderID   </th>
+                              <th>Name</th>
+                              <th>Quantity</th>
+                              <th>Price</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                              <span><strong><td>{{order.id}}</td></strong></span>
+                              <br> 
+                              <td>
+                                <ul>
+                                  {% for item in order.order_detail.name %}
+                                    <li>{{item}}</li>
+                                  {% endfor %}
+                                </ul>
+                              </td>
+                              <td>
+                                <ul>
+                                  {% for item in order.order_detail.Quantity %}
+                                    <li>{{item}}</li>
+                                  {% endfor %}
+                                </ul>
+                              </td> 
+                              <td>
+                                <ul>
+                                  {% for item in order.order_detail.cost %}
+                                    <li>{{item}}</li>
+                                  {% endfor %}
+                                </ul>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div class="col-md-12 d-inline p-2 bg-dark text-white">order made on: {{order.Date}} </a></div>
+                        <div class="col-md-12 d-inline p-2 bg-dark text-white">Total Cost: {{order.totalcost}} </a></div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+    <br>
+    <br>
+    {% endfor %}
+</div>
+
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+
+</script>
+</body>
+</html>

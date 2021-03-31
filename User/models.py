@@ -10,6 +10,7 @@ class student(models.Model):
 	Payment_due=models.CharField(max_length=10, null=True)
 	otp=models.CharField(max_length=10, null=True)
 	is_collegeStudent=models.CharField(max_length=3,null=False)
+	UserRollno=models.CharField(max_length=50,null=True)
 	objects=models.DjongoManager()
 	def __str__(self):
 		return self.name
@@ -26,7 +27,7 @@ class currentorder(models.Model):
 	UserRollno=models.CharField(max_length=50,null=True)
 	order_detail=models.JSONField()
 	def __str__(self):
-		return self.Username
+		return self.id
 
 class previousorder(models.Model):
 	id= models.CharField(max_length=20,primary_key=True, serialize=False)
@@ -40,4 +41,13 @@ class previousorder(models.Model):
 	UserRollno=models.CharField(max_length=50,null=True)
 	order_detail=models.JSONField()
 	def __str__(self):
-		return self.Username
+		return self.id
+
+class cart(models.Model):
+	user_id=models.CharField(max_length=50,null=False,primary_key=True)
+	itemName=models.JSONField()
+	itemQuantity=models.JSONField()
+	objects=models.DjongoManager()
+	def __str__(self):
+		return self.user_id
+	

@@ -15,6 +15,12 @@ urlpatterns = [
     path('homeUser', views.homeUser, name='homeUser'),
     path('user_logout', views.user_logout, name='user_logout'),
     path('homeUser/payment_type/', views.payment_type, name='payment_type'),
+    path('order_history',views.order_history, name='order_history'),
+    path('homeUser/prod_description/',views.prod_description,name='prod_description'),
+    path('homeUser/view_cart/',views.view_cart,name='view_cart'),
+    path('homeUser/add_itemtocart',views.add_itemtocart,name='add_itemtocart'),
+    path('homeUser/checkout/',views.checkout,name='checkout'),
+    path('homeUser/pay/',views.pay,name='pay'),
     #path('login/ForgotPassword',views.ForgotPassword, name="ForgotPassword"),
     
 ]

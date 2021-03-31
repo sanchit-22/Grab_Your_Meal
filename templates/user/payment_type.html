@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<title>Grab Your Meal| payment_type</title>
+	<!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/css/mdb.min.css" rel="stylesheet">
+    <meta name="description" content="This is the description">
+	<style type="text/css">
+            .logo img{
+                width:50px;
+            }
+            .left{
+                float: left;
+                text-align: left;
+            }
+            * {
+                font-family: sans-serif; 
+              }
+	</style>
+    </head>
+    <body>
+    {% include 'user/header.html' %}
+	<div class="container pt-5" style="width: 415px;">
+		<div class="card">
+        <form action="/homeUser/pay/" method="POST">
+            {% csrf_token %}
+            <input type="radio" id="male" name="type" value="paypal">
+                <label for="male">Paypal <i class="fab fa-paypal"></i></label><br>
+            <input type="radio" id="female" name="type" value="cash">
+                <label for="female">Pay by Cash <i class="fa fa-university"></i></label><br>
+            {% if college %}
+                <input type="radio" id="other" name="type" value="paylater">
+                    <label for="other">Pay Later <i class="fa fa-credit-card"></i></label> 
+            {% endif %}
+            <br>
+            <input type="hidden" name="total" value="{{total}}">
+            <button type ="submit" class="btn btn-primary">Pay</button>
+        </form>
+		</div>
+	</div>
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/js/mdb.min.js"></script>
+</body>
+</html>

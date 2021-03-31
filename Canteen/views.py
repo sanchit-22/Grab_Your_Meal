@@ -96,3 +96,10 @@ def order_delivered(request):
 	previousorder_data.save()
 	todelete=currentorder.objects.filter(id=idd).delete()
 	return redirect('/canteen/home')
+
+def cash(request):
+	canteenuserid=request.session.get('canteenuserid') 
+	if canteenuserid=='canteen':
+		return render(request,'canteen/cash.html')
+	else:
+		return redirect('canteen')
