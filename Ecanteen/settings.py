@@ -139,7 +139,7 @@ EMAIL_HOST='smtp.gmail.com'
 DEFAULT_FROM_EMAIL='grabyourmeal1@gmail.com'
 SERVER_EMAIL='grabyourmeal1@gmail.com'
 EMAIL_HOST_USER='grabyourmeal1@gmail.com'
-EMAIL_HOST_PASSWORD='HighlySecuredPassword'
+EMAIL_HOST_PASSWORD='writepassword'
 EMAIL_USE_TLS=True
 EMAIL_PORT= 587
 
