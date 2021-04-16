@@ -36,7 +36,68 @@
               </div>
             </div>
     </div>
-    
+{% if current_order %}
+<h3 class="text-center">Current Order History</h3>
+<div class="container bootdey">
+  {% for order in current_order %}
+    <div class="panel panel-default panel-order">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-11">
+                    <div class="row">
+                        <div class="col-md-12">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th>orderID   </th>
+                              <th>Name</th>
+                              <th>Quantity</th>
+                              <th>Price</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                              <span><strong><td>{{order.id}}</td></strong></span>
+                              <br> 
+                              <td>
+                                <ul>
+                                  {% for item in order.order_detail.name %}
+                                    <li>{{item}}</li>
+                                  {% endfor %}
+                                </ul>
+                              </td>
+                              <td>
+                                <ul>
+                                  {% for item in order.order_detail.Quantity %}
+                                    <li>{{item}}</li>
+                                  {% endfor %}
+                                </ul>
+                              </td> 
+                              <td>
+                                <ul>
+                                  {% for item in order.order_detail.cost %}
+                                    <li>{{item}}</li>
+                                  {% endfor %}
+                                </ul>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div class="col-md-12 d-inline p-2 bg-dark text-white">order made on: {{order.Date}} </a></div>
+                        <div class="col-md-12 d-inline p-2 bg-dark text-white">Total Cost: {{order.totalcost}} </a></div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+    <br>
+    <br>
+    {% endfor %}
+</div>
+{% endif %}
+{% if previous_order %}
+<h3 class="text-center">Previous Order History</h3>
 <div class="container bootdey">
   {% for order in previous_order %}
     <div class="panel panel-default panel-order">
@@ -94,6 +155,7 @@
     <br>
     {% endfor %}
 </div>
+{% endif %}
 
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

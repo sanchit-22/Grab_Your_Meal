@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path,include
 from User import views
 from Canteen import views as C_views
+from django.conf.urls import url
 urlpatterns = [
     path('', views.home, name='home'),
     path('signup/', views.Signup, name='signup'),
@@ -21,6 +22,7 @@ urlpatterns = [
     path('homeUser/add_itemtocart',views.add_itemtocart,name='add_itemtocart'),
     path('homeUser/checkout/',views.checkout,name='checkout'),
     path('homeUser/pay/',views.pay,name='pay'),
+    path('order-completed', views.ordercompleted, name='order-completed'),
     #path('login/ForgotPassword',views.ForgotPassword, name="ForgotPassword"),
     
 ]
